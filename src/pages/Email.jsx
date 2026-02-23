@@ -24,7 +24,7 @@ function Email() {
             const res = await axios.post("https://email-generation-backend-2.onrender.com/email", data);
             setEmail(res.data.email);
         } catch (err) {
-            alert("Error generating email");
+            alert("Error generate email");
         }
         setloading(false);
     };
