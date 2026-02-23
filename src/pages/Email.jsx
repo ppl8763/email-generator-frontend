@@ -97,38 +97,42 @@ function Email() {
                 </div>
 
                 {/* Right Side: Output */}
+                {/* Right Side: Output */}
                 <div className="p-8 bg-slate-50/50 flex flex-col">
-                    <div className="flex justify-between items-center mb-4">
-                        <h3 className="font-bold text-slate-500 uppercase text-xs tracking-widest">Result</h3>
-                        {email && (
-                            <div className="mt-6 bg-white text-gray-800 rounded-xl p-4 shadow-xl animate-fadeIn">
-                                <div className="flex justify-between items-center mb-3">
-                                    <h3 className="font-bold text-lg">Edit Email</h3>
-                                    <button
-                                        onClick={copyToClipboard}
-                                        className="text-sm bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 transition"
-                                    >
-                                        Copy
-                                    </button>
-                                </div>
 
-                                <textarea
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full h-60 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
-                                />
-                            </div>
-                        )}                    </div>
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="font-bold text-slate-500 uppercase text-xs tracking-widest">
+                            Result
+                        </h3>
+
+                        {email && (
+                            <button
+                                onClick={copyToClipboard}
+                                className="flex items-center gap-1 text-sm bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 transition"
+                            >
+                                <Copy size={14} />
+                                Copy
+                            </button>
+                        )}
+                    </div>
 
                     <div className="flex-grow bg-white border border-slate-200 rounded-2xl p-6 shadow-sm overflow-y-auto max-h-[400px] md:max-h-full">
+
                         {email ? (
-                            <p className="whitespace-pre-line text-slate-700 leading-relaxed">{email}</p>
+                            <textarea
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full h-full min-h-[300px] text-slate-700 leading-relaxed outline-none resize-none"
+                            />
                         ) : (
                             <div className="h-full flex flex-col items-center justify-center text-slate-400 text-center">
                                 <div className="mb-4 p-4 bg-slate-100 rounded-full italic font-serif text-2xl">“</div>
-                                <p className="text-sm px-8">Fill in the details and click generate to see your AI-crafted email here.</p>
+                                <p className="text-sm px-8">
+                                    Fill in the details and click generate to see your AI-crafted email here.
+                                </p>
                             </div>
                         )}
+
                     </div>
                 </div>
 
