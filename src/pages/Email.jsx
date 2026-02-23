@@ -39,7 +39,7 @@ function Email() {
     return (
         <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans text-slate-900">
             <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-                
+
                 {/* Left Side: Inputs */}
                 <div className="p-8 border-r border-slate-100">
                     <div className="flex items-center gap-2 mb-6">
@@ -52,19 +52,19 @@ function Email() {
                     <div className="space-y-4">
                         <div>
                             <label className="text-sm font-semibold ml-1">Purpose</label>
-                            <input name="purpose" placeholder="e.g. Job Application" onChange={handleChange} 
+                            <input name="purpose" placeholder="e.g. Job Application" onChange={handleChange}
                                 className="w-full mt-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <label className="text-sm font-semibold ml-1">To Whom?</label>
-                                <input name="recipient_type" placeholder="e.g. Hiring Manager" onChange={handleChange} 
+                                <input name="recipient_type" placeholder="e.g. Hiring Manager" onChange={handleChange}
                                     className="w-full mt-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
                                 <label className="text-sm font-semibold ml-1">Tone</label>
-                                <select name="tone" onChange={handleChange} 
+                                <select name="tone" onChange={handleChange}
                                     className="w-full mt-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
                                     <option value="Professional">Professional</option>
                                     <option value="Friendly">Friendly</option>
@@ -75,17 +75,17 @@ function Email() {
 
                         <div>
                             <label className="text-sm font-semibold ml-1">Core Message</label>
-                            <textarea name="message" placeholder="What points should be covered?" rows="4" onChange={handleChange} 
+                            <textarea name="message" placeholder="What points should be covered?" rows="4" onChange={handleChange}
                                 className="w-full mt-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none resize-none" />
                         </div>
 
                         <div>
                             <label className="text-sm font-semibold ml-1">Your Name</label>
-                            <input name="sender_name" placeholder="Signature name" onChange={handleChange} 
+                            <input name="sender_name" placeholder="Signature name" onChange={handleChange}
                                 className="w-full mt-1 p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
 
-                        <button 
+                        <button
                             onClick={generate}
                             disabled={loading}
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-200 disabled:opacity-70"
@@ -101,11 +101,24 @@ function Email() {
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="font-bold text-slate-500 uppercase text-xs tracking-widest">Result</h3>
                         {email && (
-                            <button onClick={copyToClipboard} className="text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-sm font-medium">
-                                <Copy size={16} /> Copy
-                            </button>
-                        )}
-                    </div>
+                            <div className="mt-6 bg-white text-gray-800 rounded-xl p-4 shadow-xl animate-fadeIn">
+                                <div className="flex justify-between items-center mb-3">
+                                    <h3 className="font-bold text-lg">Edit Email</h3>
+                                    <button
+                                        onClick={copyToClipboard}
+                                        className="text-sm bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 transition"
+                                    >
+                                        Copy
+                                    </button>
+                                </div>
+
+                                <textarea
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full h-60 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                                />
+                            </div>
+                        )}                    </div>
 
                     <div className="flex-grow bg-white border border-slate-200 rounded-2xl p-6 shadow-sm overflow-y-auto max-h-[400px] md:max-h-full">
                         {email ? (
